@@ -1,53 +1,581 @@
 <!doctype html>
-footer{border-top:1px solid #1f2a3a;background:#0b1220;color:#a9bfd6}
-.foot{display:flex;gap:1rem;flex-wrap:wrap;justify-content:space-between;padding:1rem}
-/* Map */
-#map{height:420px;border-radius:14px;overflow:hidden;border:1px solid #213047}
-.form-row{display:flex;gap:.5rem;flex-wrap:wrap}
-input,select{background:#0a1524;border:1px solid #1f2a3a;color:#cfe6ff;border-radius:.6rem;padding:.6rem .75rem}
-label{font-size:.9rem;color:#a9bfd6}
-.route-item{display:flex;justify-content:space-between;align-items:center;border:1px dashed #2a3c53;border-radius:12px;padding:.5rem .75rem}
-.chip{font-size:.8rem;background:#0b2336;border:1px solid #1e3a57;border-radius:999px;padding:.15rem .5rem;color:#8ecbff}
-</style>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>TheRun - Active Lifestyle Super App</title>
+  <meta name="description" content="The world's first multi-transport entertainment platform where you can compete in challenges, build routes, and win prizes." />
+  <meta name="theme-color" content="#111827" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Crect width='100%25' height='100%25' rx='12' ry='12' fill='%23111827'/%3E%3Cpath d='M20 44l7-12-7-12h8l7 12-7 12zM36 44l7-12-7-12h8l7 12-7 12z' fill='%23F59E0B'/%3E%3C/svg%3E" />
+  <meta property="og:title" content="TheRun - Active Lifestyle Super App" />
+  <meta property="og:description" content="Compete on routes across running, cycling, skating, scooters, and more - win prizes and join global challenges." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://therun.app/" />
+  <meta property="og:image" content="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAQCAYAAABi1XicAAA..." />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #0f172a;
+      --muted: #94a3b8;
+      --text: #e5e7eb;
+      --brand: #22d3ee;
+      --brand-2: #8b5cf6;
+      --accent: #f59e0b;
+      --ring: rgba(34,211,238,.35);
+      --ok: #22c55e;
+      --warn: #f59e0b;
+      --bad: #ef4444;
+      --shadow: 0 6px 30px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.04);
+    }
+    * { box-sizing: border-box }
+    html, body { height: 100% }
+    body {
+      margin: 0;
+      font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background:
+        radial-gradient(1200px 600px at 100% -20%, rgba(139,92,246,.16), transparent 60%),
+        radial-gradient(1000px 500px at 0% 120%, rgba(34,211,238,.12), transparent 60%),
+        var(--bg);
+      scroll-behavior: smooth;
+    }
+    a { color: var(--brand) }
+    .container { width: min(1200px, 92%); margin: 0 auto }
+    header {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: saturate(1.2) blur(12px);
+      background: rgba(10,12,24,.6);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 0 }
+    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); font-weight: 700; letter-spacing: .3px }
+    .brand svg { width: 28px; height: 28px }
+    nav { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center }
+    nav a {
+      text-decoration: none; color: var(--text); opacity: .85; padding: 6px 10px; border-radius: 10px;
+    }
+    nav a.active, nav a:hover { background: rgba(255,255,255,.06); opacity: 1 }
+    .actions { display: flex; gap: 8px; align-items: center }
+    .btn, button.btn {
+      appearance: none; border: 0; cursor: pointer; text-decoration: none;
+      padding: 10px 14px; border-radius: 12px; font-weight: 600; color: #0b1020;
+      background: linear-gradient(90deg, var(--brand), var(--brand-2));
+      box-shadow: var(--shadow);
+    }
+    .btn.ghost { background: rgba(255,255,255,.06); color: var(--text) }
+    .btn.small { padding: 8px 12px; font-weight: 600; border-radius: 10px }
+    .menu { display: none }
+    @media (max-width: 880px) {
+      nav { display: none }
+      .menu { display: inline-flex }
+    }
+
+    .hero { padding: clamp(36px, 6vw, 72px) 0; }
+    .hero-grid { display: grid; grid-template-columns: 1.25fr .75fr; gap: 28px; align-items: center }
+    @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr } }
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 20px; box-shadow: var(--shadow);
+    }
+    .panel { padding: clamp(16px, 2.2vw, 28px) }
+    h1 { font-size: clamp(28px, 5.4vw, 56px); line-height: 1.1; margin: 0 0 8px }
+    h2 { font-size: clamp(22px, 3.2vw, 34px); margin: 0 0 14px }
+    .lead { color: var(--muted); font-size: clamp(16px, 2.1vw, 20px) }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 0 }
+    .chip { padding: 6px 10px; border-radius: 999px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.08); font-size: 13px }
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 16px }
+    .stat { text-align: center; padding: 14px; border-radius: 14px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.06) }
+    .stat b { font-size: 22px }
+
+    .section { padding: 60px 0 }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px }
+    @media (max-width: 900px) { .grid-3 { grid-template-columns: 1fr } }
+
+    .feature { display: grid; grid-template-columns: auto 1fr; gap: 12px; padding: 14px; border-radius: 14px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.06) }
+    .feature i { width: 36px; height: 36px; display: grid; place-items: center; border-radius: 10px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.08) }
+
+    .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px }
+    .ss { aspect-ratio: 9/19.5; border-radius: 18px; overflow: hidden; background: #0a0f1f; border: 1px solid rgba(255,255,255,.08); position: relative }
+    .ss::after { content: "App preview"; position: absolute; bottom: 8px; right: 10px; font-size: 12px; color: var(--muted) }
+    @media (max-width: 900px) { .gallery { grid-template-columns: 1fr 1fr } }
+
+    .tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px }
+    .tab { padding: 8px 12px; border-radius: 10px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.08); cursor: pointer; user-select: none }
+    .tab[aria-selected="true"] { outline: 2px solid var(--ring) }
+
+    .leaderboard table { width: 100%; border-collapse: collapse; }
+    .leaderboard th, .leaderboard td { padding: 10px; border-bottom: 1px solid rgba(255,255,255,.06); text-align: left }
+    .pill { display: inline-block; padding: 4px 8px; border-radius: 999px; font-size: 12px; background: rgba(34,211,238,.16); border: 1px solid rgba(34,211,238,.35) }
+
+    .faq details { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: 14px; padding: 12px 14px }
+    .faq summary { cursor: pointer; font-weight: 600 }
+    .row { display: grid; gap: 14px; grid-template-columns: 1fr 1fr }
+    @media (max-width: 900px) { .row { grid-template-columns: 1fr } }
+
+    footer { padding: 30px 0 60px; color: var(--muted) }
+    .notice { display: none; text-align: center; padding: 10px; background: rgba(245,158,11,.15); border: 1px solid rgba(245,158,11,.4); color: #fde68a; border-radius: 10px; margin-bottom: 10px }
+    .toast { position: fixed; bottom: 20px; right: 20px; background: #0f172a; border: 1px solid rgba(255,255,255,.08); color: var(--text); padding: 12px 14px; border-radius: 12px; display: none; box-shadow: var(--shadow) }
+  </style>
 </head>
 <body>
-<div class="app">
 <header>
-<div class="bar">
-<a class="logo" href="#/home" aria-label="therun.app home">
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 12h6l3-9 3 18 3-9h3"/></svg>
-<span>therun.app</span>
-</a>
-<nav id="nav"></nav>
-<button id="install" class="install-btn" hidden>Install</button>
-</div>
+  <div class="container topbar">
+    <a class="brand" href="#home" aria-label="TheRun home">
+      <svg viewBox="0 0 64 64" role="img" aria-hidden="true"><rect x="6" y="6" width="52" height="52" rx="12" fill="#0ea5e9"/><path d="M18 44l8-12-8-12h9l8 12-8 12zM35 44l8-12-8-12h9l8 12-8 12z" fill="#111827"/></svg>
+      <span>TheRun</span>
+    </a>
+    <nav id="nav">
+      <a href="#features">Features</a>
+      <a href="#how">How it works</a>
+      <a href="#play">Challenges</a>
+      <a href="#download">Download</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="actions">
+      <button class="btn small" id="installBtn" hidden>Install app</button>
+      <a class="btn ghost small" href="#download">Get TheRun</a>
+      <button class="btn ghost small menu" id="menuBtn" aria-label="Open menu">☰</button>
+    </div>
+  </div>
 </header>
 
+<main id="home">
+  <div class="container hero">
+    <div class="notice" id="migrateNotice">Heads up - We have moved from <b>therunapp.com</b> to <b>therun.app</b>. Update your bookmarks.</div>
+    <div class="hero-grid">
+      <section class="card panel">
+        <h1>Compete. Have fun. Win prizes.</h1>
+        <p class="lead">Active lifestyle super app across running - cycling - scooters - skates - boards. Create a route, join public challenges, and climb leaderboards.</p>
+        <div class="chips">
+          <span class="chip">Multi-transport</span>
+          <span class="chip">Global challenges</span>
+          <span class="chip">Create routes</span>
+          <span class="chip">Win tokens and rewards</span>
+        </div>
+        <div style="display:flex; gap:10px; margin-top:16px; flex-wrap: wrap">
+          <a class="btn" href="#download">Start free</a>
+          <a class="btn ghost" href="#play">Try a demo challenge</a>
+        </div>
+        <div class="stats">
+          <div class="stat"><b id="statUsers">0</b><div>athletes</div></div>
+          <div class="stat"><b id="statRoutes">0</b><div>community routes</div></div>
+          <div class="stat"><b id="statPrizes">0</b><div>prize drops</div></div>
+        </div>
+      </section>
+      <aside class="card panel">
+        <h2>Quick demo</h2>
+        <p class="lead">Pick a transport type and preview how a route-based challenge feels.</p>
+        <div class="tabs" role="tablist" aria-label="Transports">
+          <button class="tab" data-kind="run" aria-selected="true">Run</button>
+          <button class="tab" data-kind="bike">Bike</button>
+          <button class="tab" data-kind="scooter">Scooter</button>
+          <button class="tab" data-kind="skates">Skates</button>
+        </div>
+        <form id="demoForm" class="row" autocomplete="off">
+          <label class="card panel" style="display:block">
+            <div style="font-weight:600">Route name</div>
+            <input name="route" required placeholder="City Park Loop" style="width:100%; margin-top:6px; padding:10px; border-radius:10px; border:1px solid rgba(255,255,255,.12); background:#0b1020; color:var(--text)" />
+          </label>
+          <label class="card panel" style="display:block">
+            <div style="font-weight:600">Distance (km)</div>
+            <input name="km" type="number" min="0.5" step="0.5" value="5" required style="width:100%; margin-top:6px; padding:10px; border-radius:10px; border:1px solid rgba(255,255,255,.12); background:#0b1020; color:var(--text)" />
+          </label>
+          <div class="card panel" style="grid-column:1/-1">
+            <div style="display:flex; gap:10px; flex-wrap:wrap">
+              <button class="btn" type="submit">Generate challenge</button>
+              <button class="btn ghost" type="button" id="seedBtn">Seed sample leaderboard</button>
+              <span class="pill" id="demoKind">Run</span>
+            </div>
+            <div class="leaderboard" style="margin-top:12px; overflow:auto">
+              <table id="board">
+                <thead><tr><th>#</th><th>Athlete</th><th>Time</th><th>Pace</th><th>Transport</th></tr></thead>
+                <tbody><tr><td colspan="5" style="color:var(--muted)">No entries yet - click Seed</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+        </form>
+      </aside>
+    </div>
+  </div>
 
-<main>
-<div id="view"></div>
+  <section id="features" class="section">
+    <div class="container">
+      <h2>What you get</h2>
+      <div class="grid-3" style="margin-top:10px">
+        <div class="feature">
+          <i>🏁</i>
+          <div><b>Route creation</b><div class="muted">Design courses others can race any time. Pick distance and terrain and publish in seconds.</div></div>
+        </div>
+        <div class="feature">
+          <i>🌍</i>
+          <div><b>Global challenges</b><div class="muted">Join rolling leaderboards that reset on a schedule - weekend sprints, city cups, and more.</div></div>
+        </div>
+        <div class="feature">
+          <i>🎁</i>
+          <div><b>Prizes and tokens</b><div class="muted">Win in-app rewards through legit competitions and milestones. Play fair - have fun.</div></div>
+        </div>
+        <div class="feature">
+          <i>📣</i>
+          <div><b>Community</b><div class="muted">Follow friends, form clubs, and vote on featured routes in your city.</div></div>
+        </div>
+        <div class="feature">
+          <i>🧭</i>
+          <div><b>Any transport</b><div class="muted">Run, ride, skate, scooter, boards - pick your mode and switch any time.</div></div>
+        </div>
+        <div class="feature">
+          <i>🔒</i>
+          <div><b>Privacy-first</b><div class="muted">You control visibility of activities and profile. Export or delete your data easily.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" class="section">
+    <div class="container card panel">
+      <h2>How it works</h2>
+      <ol>
+        <li>Download the app and sign in.</li>
+        <li>Create or join a route-based challenge in your city.</li>
+        <li>Record your activity and secure a verified time.</li>
+        <li>Climb the leaderboard and unlock prize drops.</li>
+      </ol>
+      <div class="gallery" style="margin-top:12px">
+        <div class="ss"></div>
+        <div class="ss"></div>
+        <div class="ss"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="play" class="section">
+    <div class="container">
+      <div class="row">
+        <div class="card panel">
+          <h2>Try a sample challenge</h2>
+          <p class="lead">Use the demo to generate a leaderboard. All data stays in your browser.</p>
+          <div class="row">
+            <label class="card panel" style="display:block">
+              <div style="font-weight:600">Add a result</div>
+              <div style="display:grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap:8px; margin-top:8px">
+                <input id="name" placeholder="Athlete name" />
+                <input id="time" placeholder="mm:ss" />
+                <input id="pace" placeholder="min/km" />
+                <select id="transport">
+                  <option>Run</option><option>Bike</option><option>Scooter</option><option>Skates</option>
+                </select>
+                <button class="btn" id="addRow">Add</button>
+              </div>
+              <p style="color:var(--muted); font-size:13px; margin-top:8px">Pro tip - click the column headers to sort.</p>
+            </label>
+            <div class="card panel" style="overflow:auto">
+              <div class="leaderboard">
+                <table id="board2">
+                  <thead>
+                    <tr>
+                      <th data-k="rank">#</th>
+                      <th data-k="name">Athlete</th>
+                      <th data-k="time">Time</th>
+                      <th data-k="pace">Pace</th>
+                      <th data-k="mode">Transport</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+              <div style="margin-top:10px; display:flex; gap:8px; flex-wrap:wrap">
+                <button class="btn ghost" id="clearLB">Clear</button>
+                <button class="btn" id="exportLB">Export JSON</button>
+                <input type="file" id="importLB" accept="application/json" hidden />
+                <button class="btn ghost" id="importBtn">Import JSON</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <aside class="card panel">
+          <h2>Why single-file PWA</h2>
+          <ul>
+            <li>Instant deploy - one `index.html` only.</li>
+            <li>Offline support via an inlined service worker.</li>
+            <li>Installable with Add to Home Screen.</li>
+            <li>Fast - all assets inlined or generated at runtime.</li>
+          </ul>
+          <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap">
+            <button id="checkUpdate" class="btn ghost">Check for updates</button>
+            <button id="clearCache" class="btn ghost">Reset offline cache</button>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="download" class="section">
+    <div class="container card panel">
+      <h2>Get the app</h2>
+      <p class="lead">Install on iOS and Android. Desktop - use the PWA install button above.</p>
+      <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:8px">
+        <a class="btn" href="https://apps.apple.com/app/therun/id1634366310">App Store</a>
+        <a class="btn" href="https://play.google.com/store/apps/details?id=com.therun.app">Google Play</a>
+        <a class="btn ghost" href="#faq">Read FAQ</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="section">
+    <div class="container faq">
+      <h2>FAQ</h2>
+      <div class="row" style="margin-top:10px">
+        <details open><summary>What transports are supported?</summary><div>Run, bike, scooter, skates, boards - switch any time.</div></details>
+        <details><summary>How do rewards work?</summary><div>Join a challenge, record a time, and place high enough to unlock prize drops. Exact mechanics can vary per event.</div></details>
+        <details><summary>Is my data private?</summary><div>You control profile and activity visibility. Local demo data never leaves your device.</div></details>
+        <details><summary>Can I create my own route?</summary><div>Yes - set distance, terrain, checkpoints, and publish for your city.</div></details>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <div class="container card panel">
+      <h2>Contact</h2>
+      <form id="contactForm" class="row">
+        <label class="card panel" style="display:block">
+          <div style="font-weight:600">Email</div>
+          <input name="email" type="email" required placeholder="you@example.com" style="width:100%; margin-top:6px; padding:10px; border-radius:10px; border:1px solid rgba(255,255,255,.12); background:#0b1020; color:var(--text)" />
+        </label>
+        <label class="card panel" style="display:block">
+          <div style="font-weight:600">Message</div>
+          <textarea name="msg" required rows="5" placeholder="Hello TheRun team..." style="width:100%; margin-top:6px; padding:10px; border-radius:10px; border:1px solid rgba(255,255,255,.12); background:#0b1020; color:var(--text)"></textarea>
+        </label>
+        <div><button class="btn">Send</button> <span id="sent" style="margin-left:8px; color:var(--muted)"></span></div>
+      </form>
+    </div>
+  </section>
 </main>
 
-
 <footer>
-<div class="foot">
-<div>© <span id="year"></span> therun.app</div>
-<div class="flex">
-<a href="#/privacy">Privacy</a>
-<span>•</span>
-<a href="#/terms">Terms</a>
-</div>
-</div>
+  <div class="container">
+    <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between">
+      <div>© <span id="y"></span> TheRun. All rights reserved.</div>
+      <div>
+        <a href="#home">Top ↑</a>
+      </div>
+    </div>
+  </div>
 </footer>
-</div>
 
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<!-- Vendor libs -->
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+/* ---------- Basic SPA nav highlighting ---------- */
+const links = [...document.querySelectorAll('nav a')];
+const sections = links.map(a => document.querySelector(a.getAttribute('href')));
+const activeLink = () => {
+  let idx = sections.findIndex(s => s.getBoundingClientRect().top > 80) - 1;
+  if (idx < 0) idx = sections.length - 1;
+  links.forEach(l => l.classList.remove('active'));
+  if (links[idx]) links[idx].classList.add('active');
+};
+document.addEventListener('scroll', activeLink, { passive: true });
+activeLink();
 
+/* ---------- Mobile menu ---------- */
+const menuBtn = document.getElementById('menuBtn');
+menuBtn?.addEventListener('click', () => {
+  const nav = document.getElementById('nav');
+  const shown = getComputedStyle(nav).display !== 'none';
+  nav.style.display = shown ? 'none' : 'flex';
+});
 
-<!-- App code -->
-<script type="module" src="/assets/app.js"></script>
+/* ---------- Migration notice if served from old host ---------- */
+if (location.hostname.includes('therunapp.com')) {
+  const el = document.getElementById('migrateNotice');
+  el.style.display = 'block';
+}
+
+/* ---------- Fun counters ---------- */
+const easeOut = t => 1 - Math.pow(1 - t, 3);
+function count(el, to, dur=1200) {
+  const t0 = performance.now(); const from = 0;
+  const tick = (tn) => {
+    const p = Math.min(1, (tn - t0) / dur);
+    el.textContent = Math.floor(from + (to - from) * easeOut(p)).toLocaleString();
+    if (p < 1) requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+}
+count(document.getElementById('statUsers'), 127000);
+count(document.getElementById('statRoutes'), 4300);
+count(document.getElementById('statPrizes'), 820);
+
+/* ---------- Demo - transport tabs ---------- */
+const demoKind = document.getElementById('demoKind');
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(t => t.setAttribute('aria-selected', 'false'));
+    tab.setAttribute('aria-selected', 'true');
+    demoKind.textContent = tab.dataset.kind[0].toUpperCase() + tab.dataset.kind.slice(1);
+  });
+});
+
+/* ---------- Demo - generate sample leaderboard ---------- */
+const board = document.querySelector('#board tbody');
+document.getElementById('seedBtn').addEventListener('click', () => {
+  const sample = [
+    { n:'Maya S', t:'19:42', p:'3:56', m:'Run' },
+    { n:'Rafa P', t:'20:05', p:'4:01', m:'Run' },
+    { n:'Ika R', t:'21:10', p:'4:14', m:'Run' }
+  ];
+  board.innerHTML = sample.map((r,i)=>`<tr><td>${i+1}</td><td>${r.n}</td><td>${r.t}</td><td>${r.p}</td><td>${r.m}</td></tr>`).join('');
+});
+document.getElementById('demoForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const fd = new FormData(e.target);
+  const route = fd.get('route'); const km = parseFloat(fd.get('km')||'5');
+  toast(`Challenge created - ${route} • ${km.toFixed(1)} km`);
+});
+
+/* ---------- Play - full leaderboard with sorting, persistence ---------- */
+const b2 = document.querySelector('#board2 tbody');
+let lb = JSON.parse(localStorage.getItem('therun-lb') || '[]');
+const saveLB = () => localStorage.setItem('therun-lb', JSON.stringify(lb));
+const renderLB = () => {
+  if (!lb.length) { b2.innerHTML = `<tr><td colspan="5" style="color:var(--muted)">No results yet</td></tr>`; return; }
+  b2.innerHTML = lb.map((r,i)=>`<tr><td>${i+1}</td><td>${r.name}</td><td>${r.time}</td><td>${r.pace}</td><td>${r.mode}</td></tr>`).join('');
+};
+renderLB();
+document.getElementById('addRow').addEventListener('click', () => {
+  const name = document.getElementById('name').value.trim();
+  const time = document.getElementById('time').value.trim();
+  const pace = document.getElementById('pace').value.trim();
+  const mode = document.getElementById('transport').value;
+  if (!name || !time || !pace) return toast('Fill all fields first');
+  lb.push({ name, time, pace, mode });
+  lb.sort((a,b)=>a.time.localeCompare(b.time));
+  saveLB(); renderLB();
+});
+document.getElementById('clearLB').addEventListener('click', () => { lb = []; saveLB(); renderLB(); toast('Leaderboard cleared'); });
+document.getElementById('exportLB').addEventListener('click', () => {
+  const blob = new Blob([JSON.stringify(lb, null, 2)], { type: 'application/json' });
+  const a = Object.assign(document.createElement('a'), { href: URL.createObjectURL(blob), download: 'therun-leaderboard.json' });
+  document.body.appendChild(a); a.click(); a.remove();
+});
+document.getElementById('importBtn').addEventListener('click', ()=> document.getElementById('importLB').click());
+document.getElementById('importLB').addEventListener('change', async (e) => {
+  const file = e.target.files[0]; if (!file) return;
+  const text = await file.text();
+  try { lb = JSON.parse(text); saveLB(); renderLB(); toast('Imported'); } catch { toast('Invalid JSON'); }
+});
+document.querySelectorAll('#board2 th').forEach(th => {
+  th.addEventListener('click', () => {
+    const k = th.dataset.k;
+    lb.sort((a,b)=> String(a[k] || '').localeCompare(String(b[k] || '')));
+    saveLB(); renderLB();
+  });
+});
+
+/* ---------- Contact form - demo only ---------- */
+document.getElementById('contactForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const data = Object.fromEntries(new FormData(e.target).entries());
+  console.log('Contact form data:', data);
+  document.getElementById('sent').textContent = 'Message queued - we will reply soon.';
+  e.target.reset();
+});
+
+/* ---------- PWA: create manifest and service worker on the fly ---------- */
+(function setupPWA(){
+  const manifest = {
+    name: "TheRun",
+    short_name: "TheRun",
+    start_url: "/",
+    display: "standalone",
+    background_color: "#0b1020",
+    theme_color: "#111827",
+    description: "Compete in multi-transport challenges, build routes, and win prizes.",
+    icons: [
+      { src: icon(64), sizes: "64x64", type: "image/svg+xml", purpose: "any" },
+      { src: icon(192), sizes: "192x192", type: "image/svg+xml", purpose: "any" },
+      { src: icon(512), sizes: "512x512", type: "image/svg+xml", purpose: "any" }
+    ]
+  };
+  function icon(size){
+    return `data:image/svg+xml,` + encodeURIComponent(
+      `<svg xmlns='http://www.w3.org/2000/svg' width='${size}' height='${size}'>
+        <rect x='6' y='6' width='${size-12}' height='${size-12}' rx='${size/8}' fill='#0ea5e9'/>
+        <path d='M${size*.28} ${size*.72} l${size*.12*-1} ${size*.2*-1} l${size*.12*-1} ${size*.2*-1} h${size*.14} l${size*.12} ${size*.2} l${size*.12*-1} ${size*.2}z' fill='#111827'/>
+      </svg>`
+    );
+  }
+  const manifestURL = URL.createObjectURL(new Blob([JSON.stringify(manifest)], {type:'application/json'}));
+  const link = document.createElement('link');
+  link.rel = 'manifest'; link.href = manifestURL; document.head.appendChild(link);
+
+  const swCode = `
+    const CACHE = 'therun-cache-v1';
+    const CORE = ['/', location.href];
+    self.addEventListener('install', e => {
+      e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE)));
+      self.skipWaiting();
+    });
+    self.addEventListener('activate', e => {
+      e.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))));
+      self.clients.claim();
+    });
+    self.addEventListener('fetch', e => {
+      const url = new URL(e.request.url);
+      // network-first for HTML, cache-first for everything else
+      if (e.request.mode === 'navigate' || (e.request.headers.get('accept') || '').includes('text/html')) {
+        e.respondWith(fetch(e.request).then(r => {
+          const copy = r.clone();
+          caches.open(CACHE).then(c => c.put(e.request, copy));
+          return r;
+        }).catch(()=>caches.match(e.request)));
+      } else {
+        e.respondWith(caches.match(e.request).then(r => r || fetch(e.request).then(resp => {
+          const copy = resp.clone(); caches.open(CACHE).then(c => c.put(e.request, copy)); return resp;
+        })));
+      }
+    });
+  `;
+  const swURL = URL.createObjectURL(new Blob([swCode], { type: 'text/javascript' }));
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register(swURL);
+  }
+})();
+
+/* ---------- PWA: install prompt ---------- */
+let deferredPrompt;
+const installBtn = document.getElementById('installBtn');
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault(); deferredPrompt = e; installBtn.hidden = false;
+});
+installBtn?.addEventListener('click', async () => {
+  if (!deferredPrompt) return;
+  deferredPrompt.prompt();
+  await deferredPrompt.userChoice;
+  deferredPrompt = null;
+  installBtn.hidden = true;
+});
+
+/* ---------- PWA: manual controls ---------- */
+document.getElementById('checkUpdate').addEventListener('click', async () => {
+  const reg = await navigator.serviceWorker.getRegistration();
+  await reg?.update();
+  toast('Checked for updates');
+});
+document.getElementById('clearCache').addEventListener('click', async () => {
+  const keys = await caches.keys();
+  await Promise.all(keys.map(k => caches.delete(k)));
+  toast('Offline cache cleared');
+});
+
+/* ---------- Utilities ---------- */
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.style.display = 'block'; clearTimeout(t._id);
+  t._id = setTimeout(()=> t.style.display = 'none', 2200);
+}
+document.getElementById('y').textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
