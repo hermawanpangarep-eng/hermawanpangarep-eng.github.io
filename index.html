@@ -4,118 +4,57 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>TheRun - Active Lifestyle Super App</title>
-  <meta name="description" content="The world's first multi-transport entertainment platform where you can compete in challenges, build routes, and win prizes." />
+  <meta name="description" content="Compete in challenges, build routes, and win prizes." />
   <meta name="theme-color" content="#111827" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Crect width='100%25' height='100%25' rx='12' ry='12' fill='%23111827'/%3E%3Cpath d='M20 44l7-12-7-12h8l7 12-7 12zM36 44l7-12-7-12h8l7 12-7 12z' fill='%23F59E0B'/%3E%3C/svg%3E" />
-  <meta property="og:title" content="TheRun - Active Lifestyle Super App" />
-  <meta property="og:description" content="Compete on routes across running, cycling, skating, scooters, and more - win prizes and join global challenges." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://therun.app/" />
-  <meta property="og:image" content="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAQCAYAAABi1XicAAA..." />
   <style>
-    :root {
-      --bg: #0b1020;
-      --panel: #0f172a;
-      --muted: #94a3b8;
-      --text: #e5e7eb;
-      --brand: #22d3ee;
-      --brand-2: #8b5cf6;
-      --accent: #f59e0b;
-      --ring: rgba(34,211,238,.35);
-      --ok: #22c55e;
-      --warn: #f59e0b;
-      --bad: #ef4444;
-      --shadow: 0 6px 30px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.04);
-    }
-    * { box-sizing: border-box }
-    html, body { height: 100% }
-    body {
-      margin: 0;
-      font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
-      color: var(--text);
-      background:
-        radial-gradient(1200px 600px at 100% -20%, rgba(139,92,246,.16), transparent 60%),
-        radial-gradient(1000px 500px at 0% 120%, rgba(34,211,238,.12), transparent 60%),
-        var(--bg);
-      scroll-behavior: smooth;
-    }
-    a { color: var(--brand) }
-    .container { width: min(1200px, 92%); margin: 0 auto }
-    header {
-      position: sticky; top: 0; z-index: 50;
-      backdrop-filter: saturate(1.2) blur(12px);
-      background: rgba(10,12,24,.6);
-      border-bottom: 1px solid rgba(255,255,255,.06);
-    }
-    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 0 }
-    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); font-weight: 700; letter-spacing: .3px }
-    .brand svg { width: 28px; height: 28px }
-    nav { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center }
-    nav a {
-      text-decoration: none; color: var(--text); opacity: .85; padding: 6px 10px; border-radius: 10px;
-    }
-    nav a.active, nav a:hover { background: rgba(255,255,255,.06); opacity: 1 }
-    .actions { display: flex; gap: 8px; align-items: center }
-    .btn, button.btn {
-      appearance: none; border: 0; cursor: pointer; text-decoration: none;
-      padding: 10px 14px; border-radius: 12px; font-weight: 600; color: #0b1020;
-      background: linear-gradient(90deg, var(--brand), var(--brand-2));
-      box-shadow: var(--shadow);
-    }
-    .btn.ghost { background: rgba(255,255,255,.06); color: var(--text) }
-    .btn.small { padding: 8px 12px; font-weight: 600; border-radius: 10px }
-    .menu { display: none }
-    @media (max-width: 880px) {
-      nav { display: none }
-      .menu { display: inline-flex }
-    }
+    :root { --bg:#0b1020; --panel:#0f172a; --muted:#94a3b8; --text:#e5e7eb; --brand:#22d3ee; --brand-2:#8b5cf6; --accent:#f59e0b; --ring:rgba(34,211,238,.35); --ok:#22c55e; --warn:#f59e0b; --bad:#ef4444; --shadow:0 6px 30px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.04) }
+    *{box-sizing:border-box} html,body{height:100%}
+    body{margin:0;font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;color:var(--text);background:
+      radial-gradient(1200px 600px at 100% -20%, rgba(139,92,246,.16), transparent 60%),
+      radial-gradient(1000px 500px at 0% 120%, rgba(34,211,238,.12), transparent 60%), var(--bg); scroll-behavior:smooth}
+    a{color:var(--brand)} .container{width:min(1200px,92%);margin:0 auto}
+    header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(1.2) blur(12px);background:rgba(10,12,24,.6);border-bottom:1px solid rgba(255,255,255,.06)}
+    .topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0}
+    .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-weight:700;letter-spacing:.3px}
+    .brand svg{width:28px;height:28px}
+    nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center}
+    nav a{text-decoration:none;color:var(--text);opacity:.85;padding:6px 10px;border-radius:10px}
+    nav a.active, nav a:hover{background:rgba(255,255,255,.06);opacity:1}
+    .actions{display:flex;gap:8px;align-items:center}
+    .btn,button.btn{appearance:none;border:0;cursor:pointer;text-decoration:none;padding:10px 14px;border-radius:12px;font-weight:600;color:#0b1020;background:linear-gradient(90deg,var(--brand),var(--brand-2));box-shadow:var(--shadow)}
+    .btn.ghost{background:rgba(255,255,255,.06);color:var(--text)} .btn.small{padding:8px 12px;border-radius:10px}
+    .menu{display:none} @media (max-width:880px){nav{display:none}.menu{display:inline-flex}}
 
-    .hero { padding: clamp(36px, 6vw, 72px) 0; }
-    .hero-grid { display: grid; grid-template-columns: 1.25fr .75fr; gap: 28px; align-items: center }
-    @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr } }
-    .card {
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 20px; box-shadow: var(--shadow);
-    }
-    .panel { padding: clamp(16px, 2.2vw, 28px) }
-    h1 { font-size: clamp(28px, 5.4vw, 56px); line-height: 1.1; margin: 0 0 8px }
-    h2 { font-size: clamp(22px, 3.2vw, 34px); margin: 0 0 14px }
-    .lead { color: var(--muted); font-size: clamp(16px, 2.1vw, 20px) }
-    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 0 }
-    .chip { padding: 6px 10px; border-radius: 999px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.08); font-size: 13px }
-    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 16px }
-    .stat { text-align: center; padding: 14px; border-radius: 14px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.06) }
-    .stat b { font-size: 22px }
-
-    .section { padding: 60px 0 }
-    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px }
-    @media (max-width: 900px) { .grid-3 { grid-template-columns: 1fr } }
-
-    .feature { display: grid; grid-template-columns: auto 1fr; gap: 12px; padding: 14px; border-radius: 14px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.06) }
-    .feature i { width: 36px; height: 36px; display: grid; place-items: center; border-radius: 10px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.08) }
-
-    .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px }
-    .ss { aspect-ratio: 9/19.5; border-radius: 18px; overflow: hidden; background: #0a0f1f; border: 1px solid rgba(255,255,255,.08); position: relative }
-    .ss::after { content: "App preview"; position: absolute; bottom: 8px; right: 10px; font-size: 12px; color: var(--muted) }
-    @media (max-width: 900px) { .gallery { grid-template-columns: 1fr 1fr } }
-
-    .tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px }
-    .tab { padding: 8px 12px; border-radius: 10px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.08); cursor: pointer; user-select: none }
-    .tab[aria-selected="true"] { outline: 2px solid var(--ring) }
-
-    .leaderboard table { width: 100%; border-collapse: collapse; }
-    .leaderboard th, .leaderboard td { padding: 10px; border-bottom: 1px solid rgba(255,255,255,.06); text-align: left }
-    .pill { display: inline-block; padding: 4px 8px; border-radius: 999px; font-size: 12px; background: rgba(34,211,238,.16); border: 1px solid rgba(34,211,238,.35) }
-
-    .faq details { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: 14px; padding: 12px 14px }
-    .faq summary { cursor: pointer; font-weight: 600 }
-    .row { display: grid; gap: 14px; grid-template-columns: 1fr 1fr }
-    @media (max-width: 900px) { .row { grid-template-columns: 1fr } }
-
-    footer { padding: 30px 0 60px; color: var(--muted) }
-    .notice { display: none; text-align: center; padding: 10px; background: rgba(245,158,11,.15); border: 1px solid rgba(245,158,11,.4); color: #fde68a; border-radius: 10px; margin-bottom: 10px }
-    .toast { position: fixed; bottom: 20px; right: 20px; background: #0f172a; border: 1px solid rgba(255,255,255,.08); color: var(--text); padding: 12px 14px; border-radius: 12px; display: none; box-shadow: var(--shadow) }
+    .hero{padding:clamp(36px,6vw,72px) 0}
+    .hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:28px;align-items:center}
+    @media (max-width:900px){.hero-grid{grid-template-columns:1fr}}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:20px;box-shadow:var(--shadow)}
+    .panel{padding:clamp(16px,2.2vw,28px)}
+    h1{font-size:clamp(28px,5.4vw,56px);line-height:1.1;margin:0 0 8px}
+    h2{font-size:clamp(22px,3.2vw,34px);margin:0 0 14px}
+    .lead{color:var(--muted);font-size:clamp(16px,2.1vw,20px)}
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0}.chip{padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);font-size:13px}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+    .stat{text-align:center;padding:14px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06)}
+    .stat b{font-size:22px}
+    .section{padding:60px 0}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    @media (max-width:900px){.grid-3{grid-template-columns:1fr}}
+    .feature{display:grid;grid-template-columns:auto 1fr;gap:12px;padding:14px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06)}
+    .feature i{width:36px;height:36px;display:grid;place-items:center;border-radius:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08)}
+    .row{display:grid;gap:14px;grid-template-columns:1fr 1fr} @media (max-width:900px){.row{grid-template-columns:1fr}}
+    footer{padding:30px 0 60px;color:var(--muted)}
+    .notice{display:none;text-align:center;padding:10px;background:rgba(245,158,11,.15);border:1px solid rgba(245,158,11,.4);color:#fde68a;border-radius:10px;margin-bottom:10px}
+    .toast{position:fixed;bottom:20px;right:20px;background:#0f172a;border:1px solid rgba(255,255,255,.08);color:var(--text);padding:12px 14px;border-radius:12px;display:none;box-shadow:var(--shadow)}
+    /* Game */
+    #gameWrap{display:grid;grid-template-columns:1fr;gap:12px}
+    #gameCanvas{width:100%;height:auto;max-height:480px;border-radius:18px;border:1px solid rgba(255,255,255,.08);background:#0a0f1f}
+    .hud{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+    .hud .pill{display:inline-block;padding:6px 10px;border-radius:999px;font-size:12px;background:rgba(34,211,238,.16);border:1px solid rgba(34,211,238,.35)}
+    .ctrls{display:flex;gap:8px;flex-wrap:wrap}
+    .ctrls .pad{display:inline-flex;gap:8px}
+    .kbd{font-family:ui-monospace,Menlo,Consolas,monospace;background:rgba(255,255,255,.08);padding:2px 6px;border-radius:6px;border:1px solid rgba(255,255,255,.1);font-size:12px}
   </style>
 </head>
 <body>
@@ -129,6 +68,7 @@
       <a href="#features">Features</a>
       <a href="#how">How it works</a>
       <a href="#play">Challenges</a>
+      <a href="#game">Demo Game</a>
       <a href="#download">Download</a>
       <a href="#faq">FAQ</a>
       <a href="#contact">Contact</a>
@@ -143,20 +83,15 @@
 
 <main id="home">
   <div class="container hero">
-    <div class="notice" id="migrateNotice">Heads up - We have moved from <b>therunapp.com</b> to <b>therun.app</b>. Update your bookmarks.</div>
+    <div class="notice" id="migrateNotice">Heads up - we moved from <b>therunapp.com</b> to <b>therun.app</b>. Update your bookmarks.</div>
     <div class="hero-grid">
       <section class="card panel">
         <h1>Compete. Have fun. Win prizes.</h1>
-        <p class="lead">Active lifestyle super app across running - cycling - scooters - skates - boards. Create a route, join public challenges, and climb leaderboards.</p>
-        <div class="chips">
-          <span class="chip">Multi-transport</span>
-          <span class="chip">Global challenges</span>
-          <span class="chip">Create routes</span>
-          <span class="chip">Win tokens and rewards</span>
-        </div>
-        <div style="display:flex; gap:10px; margin-top:16px; flex-wrap: wrap">
-          <a class="btn" href="#download">Start free</a>
-          <a class="btn ghost" href="#play">Try a demo challenge</a>
+        <p class="lead">Active lifestyle super app across running, cycling, scooters, skates, and boards.</p>
+        <div class="chips"><span class="chip">Multi transport</span><span class="chip">Global challenges</span><span class="chip">Create routes</span><span class="chip">Win rewards</span></div>
+        <div style="display:flex; gap:10px; margin-top:16px; flex-wrap:wrap">
+          <a class="btn" href="#game">Play demo game</a>
+          <a class="btn ghost" href="#play">Try challenge simulator</a>
         </div>
         <div class="stats">
           <div class="stat"><b id="statUsers">0</b><div>athletes</div></div>
@@ -166,7 +101,7 @@
       </section>
       <aside class="card panel">
         <h2>Quick demo</h2>
-        <p class="lead">Pick a transport type and preview how a route-based challenge feels.</p>
+        <p class="lead">Pick a transport and preview a challenge.</p>
         <div class="tabs" role="tablist" aria-label="Transports">
           <button class="tab" data-kind="run" aria-selected="true">Run</button>
           <button class="tab" data-kind="bike">Bike</button>
@@ -204,30 +139,9 @@
     <div class="container">
       <h2>What you get</h2>
       <div class="grid-3" style="margin-top:10px">
-        <div class="feature">
-          <i>🏁</i>
-          <div><b>Route creation</b><div class="muted">Design courses others can race any time. Pick distance and terrain and publish in seconds.</div></div>
-        </div>
-        <div class="feature">
-          <i>🌍</i>
-          <div><b>Global challenges</b><div class="muted">Join rolling leaderboards that reset on a schedule - weekend sprints, city cups, and more.</div></div>
-        </div>
-        <div class="feature">
-          <i>🎁</i>
-          <div><b>Prizes and tokens</b><div class="muted">Win in-app rewards through legit competitions and milestones. Play fair - have fun.</div></div>
-        </div>
-        <div class="feature">
-          <i>📣</i>
-          <div><b>Community</b><div class="muted">Follow friends, form clubs, and vote on featured routes in your city.</div></div>
-        </div>
-        <div class="feature">
-          <i>🧭</i>
-          <div><b>Any transport</b><div class="muted">Run, ride, skate, scooter, boards - pick your mode and switch any time.</div></div>
-        </div>
-        <div class="feature">
-          <i>🔒</i>
-          <div><b>Privacy-first</b><div class="muted">You control visibility of activities and profile. Export or delete your data easily.</div></div>
-        </div>
+        <div class="feature"><i>🏁</i><div><b>Route creation</b><div class="muted">Design courses and publish in seconds.</div></div></div>
+        <div class="feature"><i>🌍</i><div><b>Global challenges</b><div class="muted">Rolling leaderboards with weekly cups.</div></div></div>
+        <div class="feature"><i>🎁</i><div><b>Prizes</b><div class="muted">Unlock legit rewards with fair play.</div></div></div>
       </div>
     </div>
   </section>
@@ -235,17 +149,7 @@
   <section id="how" class="section">
     <div class="container card panel">
       <h2>How it works</h2>
-      <ol>
-        <li>Download the app and sign in.</li>
-        <li>Create or join a route-based challenge in your city.</li>
-        <li>Record your activity and secure a verified time.</li>
-        <li>Climb the leaderboard and unlock prize drops.</li>
-      </ol>
-      <div class="gallery" style="margin-top:12px">
-        <div class="ss"></div>
-        <div class="ss"></div>
-        <div class="ss"></div>
-      </div>
+      <ol><li>Download and sign in.</li><li>Create or join a route-based challenge.</li><li>Record your activity.</li><li>Climb leaderboards and win drops.</li></ol>
     </div>
   </section>
 
@@ -253,38 +157,30 @@
     <div class="container">
       <div class="row">
         <div class="card panel">
-          <h2>Try a sample challenge</h2>
-          <p class="lead">Use the demo to generate a leaderboard. All data stays in your browser.</p>
+          <h2>Challenge simulator</h2>
+          <p class="lead">Add results, sort, import, export. Data stays local.</p>
           <div class="row">
             <label class="card panel" style="display:block">
               <div style="font-weight:600">Add a result</div>
-              <div style="display:grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap:8px; margin-top:8px">
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr auto;gap:8px;margin-top:8px">
                 <input id="name" placeholder="Athlete name" />
                 <input id="time" placeholder="mm:ss" />
                 <input id="pace" placeholder="min/km" />
-                <select id="transport">
-                  <option>Run</option><option>Bike</option><option>Scooter</option><option>Skates</option>
-                </select>
+                <select id="transport"><option>Run</option><option>Bike</option><option>Scooter</option><option>Skates</option></select>
                 <button class="btn" id="addRow">Add</button>
               </div>
-              <p style="color:var(--muted); font-size:13px; margin-top:8px">Pro tip - click the column headers to sort.</p>
+              <p style="color:var(--muted);font-size:13px;margin-top:8px">Tip - click header to sort</p>
             </label>
             <div class="card panel" style="overflow:auto">
               <div class="leaderboard">
                 <table id="board2">
-                  <thead>
-                    <tr>
-                      <th data-k="rank">#</th>
-                      <th data-k="name">Athlete</th>
-                      <th data-k="time">Time</th>
-                      <th data-k="pace">Pace</th>
-                      <th data-k="mode">Transport</th>
-                    </tr>
-                  </thead>
+                  <thead><tr>
+                    <th data-k="rank">#</th><th data-k="name">Athlete</th><th data-k="time">Time</th><th data-k="pace">Pace</th><th data-k="mode">Transport</th>
+                  </tr></thead>
                   <tbody></tbody>
                 </table>
               </div>
-              <div style="margin-top:10px; display:flex; gap:8px; flex-wrap:wrap">
+              <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
                 <button class="btn ghost" id="clearLB">Clear</button>
                 <button class="btn" id="exportLB">Export JSON</button>
                 <input type="file" id="importLB" accept="application/json" hidden />
@@ -295,14 +191,9 @@
         </div>
         <aside class="card panel">
           <h2>Why single-file PWA</h2>
-          <ul>
-            <li>Instant deploy - one `index.html` only.</li>
-            <li>Offline support via an inlined service worker.</li>
-            <li>Installable with Add to Home Screen.</li>
-            <li>Fast - all assets inlined or generated at runtime.</li>
-          </ul>
-          <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap">
-            <button id="checkUpdate" class="btn ghost">Check for updates</button>
+          <ul><li>Instant deploy</li><li>Offline via service worker</li><li>Installable</li><li>Fast and compact</li></ul>
+          <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+            <button id="checkUpdate" class="btn ghost">Check updates</button>
             <button id="clearCache" class="btn ghost">Reset offline cache</button>
           </div>
         </aside>
@@ -310,11 +201,39 @@
     </div>
   </section>
 
+  <!-- NEW: Demo Game -->
+  <section id="game" class="section">
+    <div class="container card panel">
+      <h2>Demo Game: TheRun Dash</h2>
+      <p class="lead">Endless runner. Jump or slide to dodge. Speed rises over time.</p>
+      <div id="gameWrap">
+        <canvas id="gameCanvas" width="900" height="360" aria-label="TheRun Dash game"></canvas>
+        <div class="hud">
+          <span class="pill">Score: <b id="gScore">0</b></span>
+          <span class="pill">Best: <b id="gBest">0</b></span>
+          <span class="pill">Speed: <b id="gSpd">1.0x</b></span>
+          <div class="ctrls">
+            <button id="gStart" class="btn">Start</button>
+            <button id="gPause" class="btn ghost">Pause</button>
+            <button id="gReset" class="btn ghost">Reset</button>
+            <div class="pad">
+              <button id="gJump" class="btn ghost">Jump</button>
+              <button id="gSlide" class="btn ghost">Slide</button>
+            </div>
+          </div>
+        </div>
+        <div style="color:var(--muted);font-size:13px">
+          Keyboard: <span class="kbd">Space</span>/<span class="kbd">W</span> jump, <span class="kbd">S</span>/<span class="kbd">↓</span> slide, <span class="kbd">P</span> pause, <span class="kbd">R</span> reset.
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="download" class="section">
     <div class="container card panel">
       <h2>Get the app</h2>
-      <p class="lead">Install on iOS and Android. Desktop - use the PWA install button above.</p>
-      <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:8px">
+      <p class="lead">Install on iOS and Android. Desktop can use the PWA install button.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px">
         <a class="btn" href="https://apps.apple.com/app/therun/id1634366310">App Store</a>
         <a class="btn" href="https://play.google.com/store/apps/details?id=com.therun.app">Google Play</a>
         <a class="btn ghost" href="#faq">Read FAQ</a>
@@ -323,14 +242,10 @@
   </section>
 
   <section id="faq" class="section">
-    <div class="container faq">
+    <div class="container card panel">
       <h2>FAQ</h2>
-      <div class="row" style="margin-top:10px">
-        <details open><summary>What transports are supported?</summary><div>Run, bike, scooter, skates, boards - switch any time.</div></details>
-        <details><summary>How do rewards work?</summary><div>Join a challenge, record a time, and place high enough to unlock prize drops. Exact mechanics can vary per event.</div></details>
-        <details><summary>Is my data private?</summary><div>You control profile and activity visibility. Local demo data never leaves your device.</div></details>
-        <details><summary>Can I create my own route?</summary><div>Yes - set distance, terrain, checkpoints, and publish for your city.</div></details>
-      </div>
+      <details open><summary>Is the game offline</summary><div>Yes. It runs fully in your browser and works offline after one load.</div></details>
+      <details><summary>Can I use touch</summary><div>Use Jump and Slide buttons. Or swipe up and down on the canvas.</div></details>
     </div>
   </section>
 
@@ -340,13 +255,13 @@
       <form id="contactForm" class="row">
         <label class="card panel" style="display:block">
           <div style="font-weight:600">Email</div>
-          <input name="email" type="email" required placeholder="you@example.com" style="width:100%; margin-top:6px; padding:10px; border-radius:10px; border:1px solid rgba(255,255,255,.12); background:#0b1020; color:var(--text)" />
+          <input name="email" type="email" required placeholder="you@example.com" style="width:100%;margin-top:6px;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:#0b1020;color:var(--text)" />
         </label>
         <label class="card panel" style="display:block">
           <div style="font-weight:600">Message</div>
-          <textarea name="msg" required rows="5" placeholder="Hello TheRun team..." style="width:100%; margin-top:6px; padding:10px; border-radius:10px; border:1px solid rgba(255,255,255,.12); background:#0b1020; color:var(--text)"></textarea>
+          <textarea name="msg" required rows="5" placeholder="Hello TheRun team..." style="width:100%;margin-top:6px;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:#0b1020;color:var(--text)"></textarea>
         </label>
-        <div><button class="btn">Send</button> <span id="sent" style="margin-left:8px; color:var(--muted)"></span></div>
+        <div><button class="btn">Send</button> <span id="sent" style="margin-left:8px;color:var(--muted)"></span></div>
       </form>
     </div>
   </section>
@@ -354,11 +269,9 @@
 
 <footer>
   <div class="container">
-    <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between">
+    <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between">
       <div>© <span id="y"></span> TheRun. All rights reserved.</div>
-      <div>
-        <a href="#home">Top ↑</a>
-      </div>
+      <div><a href="#home">Top ↑</a></div>
     </div>
   </div>
 </footer>
@@ -366,216 +279,266 @@
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
-/* ---------- Basic SPA nav highlighting ---------- */
-const links = [...document.querySelectorAll('nav a')];
-const sections = links.map(a => document.querySelector(a.getAttribute('href')));
-const activeLink = () => {
-  let idx = sections.findIndex(s => s.getBoundingClientRect().top > 80) - 1;
-  if (idx < 0) idx = sections.length - 1;
-  links.forEach(l => l.classList.remove('active'));
-  if (links[idx]) links[idx].classList.add('active');
-};
-document.addEventListener('scroll', activeLink, { passive: true });
-activeLink();
+/* ---------- SPA nav highlight ---------- */
+const links=[...document.querySelectorAll('nav a')];
+const sections=links.map(a=>document.querySelector(a.getAttribute('href')));
+function activeLink(){let idx=sections.findIndex(s=>s.getBoundingClientRect().top>80)-1;if(idx<0)idx=sections.length-1;links.forEach(l=>l.classList.remove('active'));if(links[idx])links[idx].classList.add('active')}
+document.addEventListener('scroll',activeLink,{passive:true});activeLink();
 
 /* ---------- Mobile menu ---------- */
-const menuBtn = document.getElementById('menuBtn');
-menuBtn?.addEventListener('click', () => {
-  const nav = document.getElementById('nav');
-  const shown = getComputedStyle(nav).display !== 'none';
-  nav.style.display = shown ? 'none' : 'flex';
-});
+const menuBtn=document.getElementById('menuBtn');
+menuBtn?.addEventListener('click',()=>{const nav=document.getElementById('nav');const shown=getComputedStyle(nav).display!=='none';nav.style.display=shown?'none':'flex'});
 
-/* ---------- Migration notice if served from old host ---------- */
-if (location.hostname.includes('therunapp.com')) {
-  const el = document.getElementById('migrateNotice');
-  el.style.display = 'block';
-}
+/* ---------- Migration notice ---------- */
+if(location.hostname.includes('therunapp.com')){document.getElementById('migrateNotice').style.display='block'}
 
 /* ---------- Fun counters ---------- */
-const easeOut = t => 1 - Math.pow(1 - t, 3);
-function count(el, to, dur=1200) {
-  const t0 = performance.now(); const from = 0;
-  const tick = (tn) => {
-    const p = Math.min(1, (tn - t0) / dur);
-    el.textContent = Math.floor(from + (to - from) * easeOut(p)).toLocaleString();
-    if (p < 1) requestAnimationFrame(tick);
-  };
-  requestAnimationFrame(tick);
-}
-count(document.getElementById('statUsers'), 127000);
-count(document.getElementById('statRoutes'), 4300);
-count(document.getElementById('statPrizes'), 820);
+const easeOut=t=>1-Math.pow(1-t,3);
+function count(el,to,dur=1200){const t0=performance.now();const from=0;const tick=tn=>{const p=Math.min(1,(tn-t0)/dur);el.textContent=Math.floor(from+(to-from)*easeOut(p)).toLocaleString();if(p<1)requestAnimationFrame(tick)};requestAnimationFrame(tick)}
+count(document.getElementById('statUsers'),127000);count(document.getElementById('statRoutes'),4300);count(document.getElementById('statPrizes'),820);
 
-/* ---------- Demo - transport tabs ---------- */
-const demoKind = document.getElementById('demoKind');
-document.querySelectorAll('.tab').forEach(tab => {
-  tab.addEventListener('click', () => {
-    document.querySelectorAll('.tab').forEach(t => t.setAttribute('aria-selected', 'false'));
-    tab.setAttribute('aria-selected', 'true');
-    demoKind.textContent = tab.dataset.kind[0].toUpperCase() + tab.dataset.kind.slice(1);
-  });
-});
+/* ---------- Demo tabs ---------- */
+const demoKind=document.getElementById('demoKind');
+document.querySelectorAll('.tab').forEach(tab=>{tab.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(t=>t.setAttribute('aria-selected','false'));tab.setAttribute('aria-selected','true');demoKind.textContent=tab.dataset.kind[0].toUpperCase()+tab.dataset.kind.slice(1)})});
 
-/* ---------- Demo - generate sample leaderboard ---------- */
-const board = document.querySelector('#board tbody');
-document.getElementById('seedBtn').addEventListener('click', () => {
-  const sample = [
-    { n:'Maya S', t:'19:42', p:'3:56', m:'Run' },
-    { n:'Rafa P', t:'20:05', p:'4:01', m:'Run' },
-    { n:'Ika R', t:'21:10', p:'4:14', m:'Run' }
-  ];
-  board.innerHTML = sample.map((r,i)=>`<tr><td>${i+1}</td><td>${r.n}</td><td>${r.t}</td><td>${r.p}</td><td>${r.m}</td></tr>`).join('');
-});
-document.getElementById('demoForm').addEventListener('submit', (e) => {
-  e.preventDefault();
-  const fd = new FormData(e.target);
-  const route = fd.get('route'); const km = parseFloat(fd.get('km')||'5');
-  toast(`Challenge created - ${route} • ${km.toFixed(1)} km`);
-});
+/* ---------- Challenge demo ---------- */
+const board=document.querySelector('#board tbody');
+document.getElementById('seedBtn').addEventListener('click',()=>{const sample=[{n:'Maya S',t:'19:42',p:'3:56',m:'Run'},{n:'Rafa P',t:'20:05',p:'4:01',m:'Run'},{n:'Ika R',t:'21:10',p:'4:14',m:'Run'}];board.innerHTML=sample.map((r,i)=>`<tr><td>${i+1}</td><td>${r.n}</td><td>${r.t}</td><td>${r.p}</td><td>${r.m}</td></tr>`).join('')});
+document.getElementById('demoForm').addEventListener('submit',e=>{e.preventDefault();const fd=new FormData(e.target);toast(`Challenge created - ${fd.get('route')} • ${parseFloat(fd.get('km')||'5').toFixed(1)} km`)});
 
-/* ---------- Play - full leaderboard with sorting, persistence ---------- */
-const b2 = document.querySelector('#board2 tbody');
-let lb = JSON.parse(localStorage.getItem('therun-lb') || '[]');
-const saveLB = () => localStorage.setItem('therun-lb', JSON.stringify(lb));
-const renderLB = () => {
-  if (!lb.length) { b2.innerHTML = `<tr><td colspan="5" style="color:var(--muted)">No results yet</td></tr>`; return; }
-  b2.innerHTML = lb.map((r,i)=>`<tr><td>${i+1}</td><td>${r.name}</td><td>${r.time}</td><td>${r.pace}</td><td>${r.mode}</td></tr>`).join('');
-};
-renderLB();
-document.getElementById('addRow').addEventListener('click', () => {
-  const name = document.getElementById('name').value.trim();
-  const time = document.getElementById('time').value.trim();
-  const pace = document.getElementById('pace').value.trim();
-  const mode = document.getElementById('transport').value;
-  if (!name || !time || !pace) return toast('Fill all fields first');
-  lb.push({ name, time, pace, mode });
-  lb.sort((a,b)=>a.time.localeCompare(b.time));
-  saveLB(); renderLB();
-});
-document.getElementById('clearLB').addEventListener('click', () => { lb = []; saveLB(); renderLB(); toast('Leaderboard cleared'); });
-document.getElementById('exportLB').addEventListener('click', () => {
-  const blob = new Blob([JSON.stringify(lb, null, 2)], { type: 'application/json' });
-  const a = Object.assign(document.createElement('a'), { href: URL.createObjectURL(blob), download: 'therun-leaderboard.json' });
-  document.body.appendChild(a); a.click(); a.remove();
-});
-document.getElementById('importBtn').addEventListener('click', ()=> document.getElementById('importLB').click());
-document.getElementById('importLB').addEventListener('change', async (e) => {
-  const file = e.target.files[0]; if (!file) return;
-  const text = await file.text();
-  try { lb = JSON.parse(text); saveLB(); renderLB(); toast('Imported'); } catch { toast('Invalid JSON'); }
-});
-document.querySelectorAll('#board2 th').forEach(th => {
-  th.addEventListener('click', () => {
-    const k = th.dataset.k;
-    lb.sort((a,b)=> String(a[k] || '').localeCompare(String(b[k] || '')));
-    saveLB(); renderLB();
-  });
-});
+/* ---------- Leaderboard table ---------- */
+const b2=document.querySelector('#board2 tbody');let lb=JSON.parse(localStorage.getItem('therun-lb')||'[]');
+const saveLB=()=>localStorage.setItem('therun-lb',JSON.stringify(lb));
+const renderLB=()=>{if(!lb.length){b2.innerHTML=`<tr><td colspan="5" style="color:var(--muted)">No results yet</td></tr>`;return}b2.innerHTML=lb.map((r,i)=>`<tr><td>${i+1}</td><td>${r.name}</td><td>${r.time}</td><td>${r.pace}</td><td>${r.mode}</td></tr>`).join('')};renderLB();
+document.getElementById('addRow').addEventListener('click',()=>{const name=document.getElementById('name').value.trim();const time=document.getElementById('time').value.trim();const pace=document.getElementById('pace').value.trim();const mode=document.getElementById('transport').value;if(!name||!time||!pace)return toast('Fill all fields first');lb.push({name,time,pace,mode});lb.sort((a,b)=>a.time.localeCompare(b.time));saveLB();renderLB()});
+document.getElementById('clearLB').addEventListener('click',()=>{lb=[];saveLB();renderLB();toast('Leaderboard cleared')});
+document.getElementById('exportLB').addEventListener('click',()=>{const blob=new Blob([JSON.stringify(lb,null,2)],{type:'application/json'});const a=Object.assign(document.createElement('a'),{href:URL.createObjectURL(blob),download:'therun-leaderboard.json'});document.body.appendChild(a);a.click();a.remove()});
+document.getElementById('importBtn').addEventListener('click',()=>document.getElementById('importLB').click());
+document.getElementById('importLB').addEventListener('change',async e=>{const file=e.target.files[0];if(!file)return;const text=await file.text();try{lb=JSON.parse(text);saveLB();renderLB();toast('Imported')}catch{toast('Invalid JSON')}});
+document.querySelectorAll('#board2 th').forEach(th=>{th.addEventListener('click',()=>{const k=th.dataset.k;lb.sort((a,b)=>String(a[k]||'').localeCompare(String(b[k]||'')));saveLB();renderLB()})});
 
-/* ---------- Contact form - demo only ---------- */
-document.getElementById('contactForm').addEventListener('submit', (e) => {
-  e.preventDefault();
-  const data = Object.fromEntries(new FormData(e.target).entries());
-  console.log('Contact form data:', data);
-  document.getElementById('sent').textContent = 'Message queued - we will reply soon.';
-  e.target.reset();
-});
+/* ---------- Contact form (demo) ---------- */
+document.getElementById('contactForm').addEventListener('submit',e=>{e.preventDefault();const data=Object.fromEntries(new FormData(e.target).entries());console.log('Contact form data:',data);document.getElementById('sent').textContent='Message queued - we will reply soon.';e.target.reset()});
 
-/* ---------- PWA: create manifest and service worker on the fly ---------- */
+/* ---------- PWA manifest and SW ---------- */
 (function setupPWA(){
-  const manifest = {
-    name: "TheRun",
-    short_name: "TheRun",
-    start_url: "/",
-    display: "standalone",
-    background_color: "#0b1020",
-    theme_color: "#111827",
-    description: "Compete in multi-transport challenges, build routes, and win prizes.",
-    icons: [
-      { src: icon(64), sizes: "64x64", type: "image/svg+xml", purpose: "any" },
-      { src: icon(192), sizes: "192x192", type: "image/svg+xml", purpose: "any" },
-      { src: icon(512), sizes: "512x512", type: "image/svg+xml", purpose: "any" }
-    ]
-  };
-  function icon(size){
-    return `data:image/svg+xml,` + encodeURIComponent(
-      `<svg xmlns='http://www.w3.org/2000/svg' width='${size}' height='${size}'>
-        <rect x='6' y='6' width='${size-12}' height='${size-12}' rx='${size/8}' fill='#0ea5e9'/>
-        <path d='M${size*.28} ${size*.72} l${size*.12*-1} ${size*.2*-1} l${size*.12*-1} ${size*.2*-1} h${size*.14} l${size*.12} ${size*.2} l${size*.12*-1} ${size*.2}z' fill='#111827'/>
-      </svg>`
-    );
-  }
-  const manifestURL = URL.createObjectURL(new Blob([JSON.stringify(manifest)], {type:'application/json'}));
-  const link = document.createElement('link');
-  link.rel = 'manifest'; link.href = manifestURL; document.head.appendChild(link);
-
-  const swCode = `
-    const CACHE = 'therun-cache-v1';
-    const CORE = ['/', location.href];
-    self.addEventListener('install', e => {
-      e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE)));
-      self.skipWaiting();
-    });
-    self.addEventListener('activate', e => {
-      e.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))));
-      self.clients.claim();
-    });
-    self.addEventListener('fetch', e => {
-      const url = new URL(e.request.url);
-      // network-first for HTML, cache-first for everything else
-      if (e.request.mode === 'navigate' || (e.request.headers.get('accept') || '').includes('text/html')) {
-        e.respondWith(fetch(e.request).then(r => {
-          const copy = r.clone();
-          caches.open(CACHE).then(c => c.put(e.request, copy));
-          return r;
-        }).catch(()=>caches.match(e.request)));
-      } else {
-        e.respondWith(caches.match(e.request).then(r => r || fetch(e.request).then(resp => {
-          const copy = resp.clone(); caches.open(CACHE).then(c => c.put(e.request, copy)); return resp;
-        })));
-      }
-    });
-  `;
-  const swURL = URL.createObjectURL(new Blob([swCode], { type: 'text/javascript' }));
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register(swURL);
-  }
+  const manifest={name:"TheRun",short_name:"TheRun",start_url:"/",display:"standalone",background_color:"#0b1020",theme_color:"#111827",description:"Compete in multi-transport challenges",icons:[{src:icon(64),sizes:"64x64",type:"image/svg+xml"},{src:icon(192),sizes:"192x192",type:"image/svg+xml"},{src:icon(512),sizes:"512x512",type:"image/svg+xml"}]};
+  function icon(size){return `data:image/svg+xml,`+encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='${size}' height='${size}'><rect x='6' y='6' width='${size-12}' height='${size-12}' rx='${size/8}' fill='#0ea5e9'/><path d='M${size*.28} ${size*.72} l${size*.12*-1} ${size*.2*-1} l${size*.12*-1} ${size*.2*-1} h${size*.14} l${size*.12} ${size*.2} l${size*.12*-1} ${size*.2}z' fill='#111827'/></svg>`)}
+  const manifestURL=URL.createObjectURL(new Blob([JSON.stringify(manifest)],{type:'application/json'}));
+  const link=document.createElement('link');link.rel='manifest';link.href=manifestURL;document.head.appendChild(link);
+  const swCode=`const CACHE='therun-cache-v1';const CORE=['/',location.href];self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE)));self.skipWaiting()});self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))));self.clients.claim()});self.addEventListener('fetch',e=>{if(e.request.mode==='navigate'||(e.request.headers.get('accept')||'').includes('text/html')){e.respondWith(fetch(e.request).then(r=>{const copy=r.clone();caches.open(CACHE).then(c=>c.put(e.request,copy));return r}).catch(()=>caches.match(e.request)))}else{e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request).then(resp=>{const copy=resp.clone();caches.open(CACHE).then(c=>c.put(e.request,copy));return resp})))}});`;
+  const swURL=URL.createObjectURL(new Blob([swCode],{type:'text/javascript'}));
+  if('serviceWorker' in navigator){navigator.serviceWorker.register(swURL)}
 })();
 
-/* ---------- PWA: install prompt ---------- */
-let deferredPrompt;
-const installBtn = document.getElementById('installBtn');
-window.addEventListener('beforeinstallprompt', (e) => {
-  e.preventDefault(); deferredPrompt = e; installBtn.hidden = false;
-});
-installBtn?.addEventListener('click', async () => {
-  if (!deferredPrompt) return;
-  deferredPrompt.prompt();
-  await deferredPrompt.userChoice;
-  deferredPrompt = null;
-  installBtn.hidden = true;
-});
-
-/* ---------- PWA: manual controls ---------- */
-document.getElementById('checkUpdate').addEventListener('click', async () => {
-  const reg = await navigator.serviceWorker.getRegistration();
-  await reg?.update();
-  toast('Checked for updates');
-});
-document.getElementById('clearCache').addEventListener('click', async () => {
-  const keys = await caches.keys();
-  await Promise.all(keys.map(k => caches.delete(k)));
-  toast('Offline cache cleared');
-});
+/* ---------- PWA install controls ---------- */
+let deferredPrompt;const installBtn=document.getElementById('installBtn');
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;installBtn.hidden=false});
+installBtn?.addEventListener('click',async()=>{if(!deferredPrompt)return;deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;installBtn.hidden=true});
+document.getElementById('checkUpdate').addEventListener('click',async()=>{const reg=await navigator.serviceWorker.getRegistration();await reg?.update();toast('Checked for updates')});
+document.getElementById('clearCache').addEventListener('click',async()=>{const keys=await caches.keys();await Promise.all(keys.map(k=>caches.delete(k)));toast('Offline cache cleared')});
 
 /* ---------- Utilities ---------- */
-function toast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg; t.style.display = 'block'; clearTimeout(t._id);
-  t._id = setTimeout(()=> t.style.display = 'none', 2200);
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.style.display='block';clearTimeout(t._id);t._id=setTimeout(()=>t.style.display='none',2200)}
+document.getElementById('y').textContent=new Date().getFullYear();
+
+/* =========================================================
+   DEMO GAME: TheRun Dash - endless runner with jump/slide
+   ========================================================= */
+const cvs=document.getElementById('gameCanvas');const ctx=cvs.getContext('2d');
+const scoreEl=document.getElementById('gScore');const bestEl=document.getElementById('gBest');const spdEl=document.getElementById('gSpd');
+const btnStart=document.getElementById('gStart');const btnPause=document.getElementById('gPause');const btnReset=document.getElementById('gReset');
+const btnJump=document.getElementById('gJump');const btnSlide=document.getElementById('gSlide');
+let best=+localStorage.getItem('therun-best')||0;bestEl.textContent=best;
+let state='idle'; // idle, run, pause, over
+let tPrev=0, acc=0, speed=300, speedMul=1, ground= cvs.height-64, score=0;
+const rng=seeded(123456);
+const player={x:100,y:0,w:36,h:48,vy:0,onGround:true,sliding:false,slideT:0};
+const obstacles=[];const particles=[];
+reset();
+
+function reset(){state='idle';speed=300;speedMul=1;score=0;obstacles.length=0;particles.length=0;player.y=ground-player.h;player.vy=0;player.onGround=true;player.sliding=false;player.slideT=0;scoreEl.textContent='0';spdEl.textContent='1.0x'}
+
+function seeded(seed){return function(){seed=(seed*1664525+1013904223)%4294967296;return seed/4294967296}}
+
+function spawnObstacle(){
+  const tall=rng()>0.5; // tall or low
+  const w=tall?28:34; const h=tall?70:28;
+  const y=tall?ground-h:ground-h; // both sit on ground
+  obstacles.push({x:cvs.width+40,y,w,h,hit:false,type:tall?'tall':'low'});
 }
-document.getElementById('y').textContent = new Date().getFullYear();
+
+function spawnParticles(x,y,n=6){for(let i=0;i<n;i++){particles.push({x,y,vx:(rng()-.5)*150,vy:-rng()*150-80,r:2+rng()*2,a:1})}}
+
+function jump(){ if(state==='over')return; if(player.onGround&&!player.sliding){player.vy=-520;player.onGround=false; spawnParticles(player.x+player.w*0.6,ground,10)}}
+function slide(){ if(state!=='run')return; if(player.onGround&&!player.sliding){player.sliding=true;player.slideT=0.45}}
+
+btnStart.addEventListener('click',()=>{if(state==='idle'||state==='over'){reset();state='run'}});
+btnPause.addEventListener('click',()=>{if(state==='run'){state='pause'}else if(state==='pause'){state='run'}});
+btnReset.addEventListener('click',()=>{reset();state='idle'});
+btnJump.addEventListener('click',jump);btnSlide.addEventListener('click',slide);
+
+window.addEventListener('keydown',e=>{
+  if(e.code==='Space'||e.key==='w'||e.key==='W'||e.key==='ArrowUp'){e.preventDefault();jump()}
+  if(e.key==='s'||e.key==='S'||e.key==='ArrowDown'){e.preventDefault();slide()}
+  if(e.key==='p'||e.key==='P'){btnPause.click()}
+  if(e.key==='r'||e.key==='R'){btnReset.click()}
+});
+
+let touchStartY=null;cvs.addEventListener('touchstart',e=>{touchStartY=e.touches[0].clientY},{passive:true});
+cvs.addEventListener('touchend',e=>{if(touchStartY==null)return;const dy=(e.changedTouches[0].clientY - touchStartY);if(Math.abs(dy)<20){jump()}else if(dy>20){slide()}touchStartY=null},{passive:true});
+
+function loop(ts){
+  requestAnimationFrame(loop);
+  const dt=(ts-tPrev)/1000||0; tPrev=ts;
+  if(state==='pause'){draw();return}
+  if(state==='run'){update(dt)}
+  draw();
+}
+requestAnimationFrame(loop);
+
+function update(dt){
+  // Difficulty ramp
+  speedMul += dt*0.03; const spd= (speed*speedMul); spdEl.textContent=(speedMul).toFixed(1)+'x';
+
+  // Score
+  score += dt* (10*speedMul); scoreEl.textContent= Math.floor(score);
+
+  // Spawn obstacles
+  acc += dt;
+  const gap = Math.max(0.8, 1.8 - speedMul*0.15); // shorter gaps over time
+  if(acc>gap){acc=0; spawnObstacle()}
+
+  // Player physics
+  player.vy += 1400*dt; // gravity
+  player.y += player.vy*dt;
+  if(player.y>=ground-player.h){player.y=ground-player.h;player.vy=0;player.onGround=true}else{player.onGround=false}
+  // Slide
+  if(player.sliding){
+    player.slideT -= dt;
+    if(player.slideT<=0){player.sliding=false}
+  }
+
+  // Obstacles
+  for(const o of obstacles){o.x -= spd*dt}
+  while(obstacles.length && obstacles[0].x+obstacles[0].w< -20){obstacles.shift()}
+  // Particles
+  for(const p of particles){p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=900*dt;p.a-=dt*1.6}
+  while(particles.length && particles[0].a<=0){particles.shift()}
+
+  // Collision
+  const ph = player.sliding ? player.h*0.55 : player.h;
+  const py = player.sliding ? player.y + player.h - ph : player.y;
+  for(const o of obstacles){
+    if(rectsOverlap(player.x,py,player.w,ph,o.x,o.y,o.w,o.h)){gameOver();break}
+  }
+}
+
+function draw(){
+  // Clear
+  ctx.clearRect(0,0,cvs.width,cvs.height);
+  // Parallax background
+  const t = performance.now()/1000;
+  drawSky();
+  drawHills(t);
+  // Ground
+  ctx.fillStyle='#0c152c';ctx.fillRect(0,ground, cvs.width, 4);
+  // Particles
+  for(const p of particles){ctx.globalAlpha=Math.max(0,p.a);ctx.fillStyle='#22d3ee';circle(p.x,p.y,p.r);ctx.globalAlpha=1}
+  // Obstacles
+  for(const o of obstacles){
+    ctx.fillStyle = o.type==='tall' ? '#ef4444' : '#f59e0b';
+    roundRect(o.x,o.y,o.w,o.h,6,true);
+    // little top stripe
+    ctx.fillStyle='rgba(255,255,255,.25)';
+    ctx.fillRect(o.x+4,o.y+4,o.w-8,3);
+  }
+  // Player
+  drawPlayer();
+
+  if(state==='idle' || state==='over'){
+    const txt = state==='idle' ? 'Tap Start to run' : 'Game Over';
+    banner(txt, state==='over'?'Score '+Math.floor(score):'Space to jump');
+  }
+}
+
+function drawSky(){
+  const g=ctx.createLinearGradient(0,0,0,cvs.height);
+  g.addColorStop(0,'#0b1a3a'); g.addColorStop(1,'#0a0f1f');
+  ctx.fillStyle=g; ctx.fillRect(0,0,cvs.width,cvs.height);
+  // stars
+  ctx.fillStyle='rgba(255,255,255,.06)';
+  for(let i=0;i<40;i++){const x=(i*97)%cvs.width;const y=(i*53)%160;ctx.fillRect(x,y,2,2)}
+}
+
+function drawHills(t){
+  ctx.fillStyle='#0b1531';
+  for(let i=0;i<3;i++){
+    const y = ground-20-i*12;
+    ctx.globalAlpha=0.15*(i+1);
+    ctx.beginPath();
+    ctx.moveTo(0,y);
+    for(let x=0;x<=cvs.width;x+=8){
+      const off = Math.sin((x*0.01+t*(0.6-i*0.1)))*8;
+      ctx.lineTo(x,y+off);
+    }
+    ctx.lineTo(cvs.width,cvs.height);ctx.lineTo(0,cvs.height);ctx.closePath();ctx.fill();
+  }
+  ctx.globalAlpha=1;
+}
+
+function drawPlayer(){
+  const ph = player.sliding ? player.h*0.55 : player.h;
+  const py = player.sliding ? player.y + player.h - ph : player.y;
+
+  // shadow
+  ctx.globalAlpha=0.25; ellipse(player.x+player.w*0.5, ground+6, 26, 6); ctx.globalAlpha=1;
+
+  // body
+  ctx.fillStyle='#22d3ee';
+  roundRect(player.x,py,player.w,ph,8,true);
+
+  // simple running arms/legs
+  const swing = Math.sin(performance.now()/120)*(player.onGround?6:2);
+  ctx.strokeStyle='rgba(255,255,255,.7)'; ctx.lineWidth=3; ctx.lineCap='round';
+  // legs
+  line(player.x+10,py+ph-6, player.x+10+swing, py+ph+8);
+  line(player.x+26,py+ph-6, player.x+26-swing, py+ph+8);
+  // arms
+  line(player.x+8,py+14, player.x+8-swing, py+24);
+  line(player.x+28,py+14, player.x+28+swing, py+24);
+
+  // head
+  ctx.fillStyle='#e5e7eb'; circle(player.x+player.w*0.5, py-6, 8);
+}
+
+function rectsOverlap(x1,y1,w1,h1,x2,y2,w2,h2){return x1<x2+w2 && x1+w1>x2 && y1<y2+h2 && y1+h1>y2+h2*0.2}
+function roundRect(x,y,w,h,r,fill){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);if(fill){ctx.fill()}else{ctx.stroke()}}
+function circle(x,y,r){ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fill()}
+function ellipse(x,y,rx,ry){ctx.beginPath();ctx.ellipse(x,y,rx,ry,0,0,Math.PI*2);ctx.fill()}
+function line(x1,y1,x2,y2){ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);ctx.stroke()}
+
+function banner(title,sub){
+  ctx.fillStyle='rgba(0,0,0,.45)'; roundRect(cvs.width/2-180,60,360,90,14,true);
+  ctx.fillStyle='#e5e7eb'; ctx.font='700 24px system-ui'; ctx.textAlign='center';
+  ctx.fillText(title,cvs.width/2,100);
+  ctx.fillStyle='rgba(229,231,235,.8)'; ctx.font='14px system-ui'; ctx.fillText(sub,cvs.width/2,122);
+}
+
+function gameOver(){
+  state='over';
+  if(score>best){best=Math.floor(score);localStorage.setItem('therun-best',best);bestEl.textContent=best}
+  spawnParticles(player.x+player.w*0.6,player.y,18);
+}
+
+/* ---------- Resize canvas to container width (keep aspect) ---------- */
+function fitCanvas(){const rect=cvs.getBoundingClientRect();const ratio=cvs.height/cvs.width;const w=Math.min(rect.width,900);cvs.style.width=w+'px';cvs.style.height=(w*ratio)+'px'}
+new ResizeObserver(fitCanvas).observe(cvs);fitCanvas();
+
+/* ---------- Start when button pressed ---------- */
+document.getElementById('gStart').addEventListener('click',()=>{if(state==='idle'||state==='over'){state='run'}});
+
+/* ========================================================= */
 </script>
 </body>
 </html>
