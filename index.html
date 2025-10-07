@@ -1,1 +1,53 @@
-hello kawnan
+<!doctype html>
+footer{border-top:1px solid #1f2a3a;background:#0b1220;color:#a9bfd6}
+.foot{display:flex;gap:1rem;flex-wrap:wrap;justify-content:space-between;padding:1rem}
+/* Map */
+#map{height:420px;border-radius:14px;overflow:hidden;border:1px solid #213047}
+.form-row{display:flex;gap:.5rem;flex-wrap:wrap}
+input,select{background:#0a1524;border:1px solid #1f2a3a;color:#cfe6ff;border-radius:.6rem;padding:.6rem .75rem}
+label{font-size:.9rem;color:#a9bfd6}
+.route-item{display:flex;justify-content:space-between;align-items:center;border:1px dashed #2a3c53;border-radius:12px;padding:.5rem .75rem}
+.chip{font-size:.8rem;background:#0b2336;border:1px solid #1e3a57;border-radius:999px;padding:.15rem .5rem;color:#8ecbff}
+</style>
+</head>
+<body>
+<div class="app">
+<header>
+<div class="bar">
+<a class="logo" href="#/home" aria-label="therun.app home">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 12h6l3-9 3 18 3-9h3"/></svg>
+<span>therun.app</span>
+</a>
+<nav id="nav"></nav>
+<button id="install" class="install-btn" hidden>Install</button>
+</div>
+</header>
+
+
+<main>
+<div id="view"></div>
+</main>
+
+
+<footer>
+<div class="foot">
+<div>© <span id="year"></span> therun.app</div>
+<div class="flex">
+<a href="#/privacy">Privacy</a>
+<span>•</span>
+<a href="#/terms">Terms</a>
+</div>
+</div>
+</footer>
+</div>
+
+
+<!-- Vendor libs -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+
+<!-- App code -->
+<script type="module" src="/assets/app.js"></script>
+</body>
+</html>
